@@ -1,0 +1,14 @@
+<section class="generic-banner relative">
+        <div class="">
+            <div class="row full-height justify-content-center">
+                <div class="col-lg-12 page-container">
+                    <div class="banner-content" >
+                        <!--<base-map></base-map>-->
+                        <list-item *ngFor="let l of locations" [location]="l"></list-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<ng2-toasty [position]="'center-center'"></ng2-toasty>

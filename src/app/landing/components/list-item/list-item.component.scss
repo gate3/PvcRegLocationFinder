@@ -1,0 +1,26 @@
+// component css goes here
+
+img.avatar{
+    max-width: 100px;
+    border: solid thin #f1f1f1
+}
+
+div.list-item{
+    transition: background-color 0.5s ease;
+    div.list-item-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0px 10px;
+        border-bottom: solid thin #f1f1f1;
+        width: 100%;
+
+        .location-name{
+            font-weight: bold;
+        }
+    }
+}
+
+div.list-item:hover {
+    background-color: #f1f1f1;
+}

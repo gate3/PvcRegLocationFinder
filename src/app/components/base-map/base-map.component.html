@@ -1,0 +1,18 @@
+<div *ngIf="lat && lng" style="height: 100%;"> 
+
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomLevel">
+          
+          <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+
+          <agm-marker [latitude]="lat"[longitude]="lng">
+            
+            <agm-info-window>
+              <h3><strong>Howdy!</strong></h3>
+              <p>You are here!</p>
+            </agm-info-window>
+      
+          </agm-marker>
+      
+        </agm-map>
+      
+<div>
