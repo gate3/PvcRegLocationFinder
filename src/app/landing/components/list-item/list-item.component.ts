@@ -1,5 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { LINKS } from '../../../services';
 
 @Component({
     moduleId: module.id,
@@ -10,10 +11,12 @@ import {Router} from '@angular/router';
 export class ListItemComponent {
 
     @Input()location
+    @Input()isMobile:boolean = true
 
     constructor (private router:Router) {}
 
     openLocation () {
-        this.router.navigate([`/info/${this.location.name}/${this.location.address}/${this.location.location}`],)
+        const link = this.isMobile ? LINKS.MOBILE_INFO : LINKS.WEB_INFO
+        this.router.navigate([`${link}${this.location.name}/${this.location.address}/${this.location.location}`],)
     }
 }

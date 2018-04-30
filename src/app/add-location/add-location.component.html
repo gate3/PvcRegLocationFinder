@@ -1,0 +1,50 @@
+<red-section [title]="'Help Add Locations'">
+    This app isn't a one man effort, the locations are way to much to map. Please use the form below to add locations around you or that you know of. Thank you for your contribution.
+</red-section>
+<section class="generic-banner relative" *ngIf="!loading">
+    <div class="">
+        <div class="row full-height justify-content-center">
+            <div class="col-xs-12 col-lg-7 page-container">
+                <div class="banner-content" style="display: flex">
+
+                    <form novalidate style="width: 100%"
+                        (ngSubmit)="onSubmit(addLocationForm)" 
+                        [formGroup]="addLocationForm" role="form">
+
+                        <div class="mt-10">
+                            <input type="text" placeholder="Location Name" class="single-input" formControlName="locationName"/>
+                        </div>
+
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
+                            <input type="text" placeholder="Address" class="single-input" formControlName="address"/>
+                        </div>
+
+                        <div class="mt-10">
+                            <select formControlName="state" (change)="showLgas($event)"
+                                class="form-control single-input">
+                                <option *ngFor="let s of states">{{s}}</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-10">
+                            <select formControlName="lga" 
+                                class="form-control single-input">
+                                <option *ngFor="let lga of local_govts">
+                                    {{lga.name}}
+                                </option>
+                            </select>
+                        </div>                      
+                    </form>
+
+                    <div class="col-xs-12 map-container">
+                        <base-map [lat]="lat" [lng]="lng"></base-map>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<loading *ngIf="loading"></loading>

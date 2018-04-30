@@ -1,0 +1,23 @@
+<section class="generic-banner relative">
+        <div class="">
+            <div class="row full-height justify-content-center">
+                <div class="col-lg-12 page-container">
+                    <h4>{{locationData.name}}</h4>
+                    <p>{{locationData.address}}</p>
+                    <!--<div style="display: flex;justify-content: space-evenly">
+                        <div class="col-xs-6">
+                            <a class="primary-btn clickable">Map</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="primary-btn clickable">Directions</a>
+                        </div>
+                    </div>-->
+                    <div class="col-xs-12 map-container">
+                        <base-map [lat]="locationData.location[0]" 
+                            [lng]="locationData.location[1]"></base-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+    

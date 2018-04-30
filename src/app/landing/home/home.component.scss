@@ -1,0 +1,12 @@
+// component css goes here
+div.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+
+    img{
+        margin-bottom: 20px;
+    }
+}

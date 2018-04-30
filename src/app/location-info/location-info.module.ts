@@ -5,10 +5,12 @@ import { NgModule } from '@angular/core';
 import { LocationInfoComponent } from './location-info.component';
 import {LocationInfoRoutingModule} from './location-info-routing.module'
 import { BaseMapModule } from '../components';
+import { MapInfoModule } from '../shared';
 @NgModule({
     imports: [
         LocationInfoRoutingModule,
-        BaseMapModule
+        //BaseMapModule,
+        MapInfoModule
     ],
     declarations: [
         LocationInfoComponent,

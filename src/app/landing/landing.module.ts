@@ -12,19 +12,24 @@ import {BaseMapModule} from '../components'
 import {ListItemComponent} from './components'
 
 import {ToastyModule} from 'ng2-toasty'
-import { NgSpinKitModule } from 'ng-spin-kit'
+import { LandingMapModule } from './landing-map/landing-map.module';
+import { HomeModule } from './home/home.module';
+import { RedSectionModule } from '../shared';
+import { LoadingModule } from '../shared/loading/loading.module';
 
 @NgModule({
     imports: [
         LandingRoutingModule,
         CommonModule,
-        BaseMapModule,
         ToastyModule.forRoot(),
-        NgSpinKitModule
+        LandingMapModule,
+        HomeModule,
+        RedSectionModule,
+        LoadingModule
     ],                                                  
     declarations: [
         LandingComponent, 
-        ListItemComponent  
+        ListItemComponent
     ],
     exports: [
         LandingComponent,

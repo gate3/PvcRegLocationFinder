@@ -13,6 +13,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { ToastyModule, ToastyService, ToastyConfig } from 'ng2-toasty';
 import {SlimLoadingBarModule, SlimLoadingBarService} from 'ng2-slim-loading-bar';
 import { EventService } from './services';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EventService } from './services';
     DeviceDetectorModule.forRoot(),
     ToastyModule.forRoot(),
     SlimLoadingBarModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule
   ],
   providers: [ToastyService, ToastyConfig, SlimLoadingBarService, EventService],
   bootstrap: [AppComponent]

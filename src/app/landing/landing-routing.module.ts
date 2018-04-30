@@ -3,7 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing.component';
 
 const routes: Routes = [
-  {path: '', component: LandingComponent }
+  {path: '', component: LandingComponent,children:[
+    {path:'', loadChildren:'./home/home.module#HomeModule'},
+    {path:'sidebar-info/:name/:address/:coords', loadChildren: './landing-map/landing-map.module#LandingMapModule'}
+  ] }
 ];
 
 @NgModule({

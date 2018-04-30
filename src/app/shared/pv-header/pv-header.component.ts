@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LINKS } from '../../services';
 
 @Component({
     moduleId: module.id,
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class PvHeaderComponent {
 
+    links:Array<any> = LINKS.MAIN_NAV
 }
