@@ -27,4 +27,8 @@ export class BaseMapComponent implements OnInit{
             }
         }, console.error)
     }
+
+    placeMarker (e) {
+        console.log(e)
+    }
 }

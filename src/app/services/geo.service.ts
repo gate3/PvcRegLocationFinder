@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as GeoFire from "geofire";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-
+import { EventService } from './event.service';
+import {Constants} from './constants'
 @Injectable()
 export class GeoService {
     private dbRef: AngularFireList<any>;
@@ -11,7 +12,7 @@ export class GeoService {
 
     public hits = new BehaviorSubject([])
 
-    constructor(private db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase, private eventService:EventService) {
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/locations');
         this.userList = this.db.list('/users')
@@ -35,6 +36,11 @@ export class GeoService {
             radius: radius
         })
         .on('key_entered', (userKey, location, distance) => {
+            //we need to check this because this.hits the behavioursubject already cached previous result and geofire fetches again each time we go back to homepage
+            const existAlready = this.hits.value.filter(h=>h.userKey === userKey)
+            if(existAlready.length > 0){
+                return
+            }
             const u = this.userList.query.ref
                           .child(`/${userKey}`)
                           .once('value', s=>{
@@ -44,12 +50,15 @@ export class GeoService {
                                 location,
                                 distance,
                                 name,
-                                address
+                                address,
+                                userKey
                             }
-                
+                            
                             let currentHits = this.hits.value
                             currentHits.push(hit)
                             this.hits.next(currentHits)
+                            
+                            this.eventService.sendMessage(Constants.EVENT_MESSAGES.LOADING, true)
                           })
         })
     }

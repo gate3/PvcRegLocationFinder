@@ -12,13 +12,15 @@ import {BaseMapModule} from '../components'
 import {ListItemComponent} from './components'
 
 import {ToastyModule} from 'ng2-toasty'
+import { NgSpinKitModule } from 'ng-spin-kit'
 
 @NgModule({
     imports: [
         LandingRoutingModule,
         CommonModule,
         BaseMapModule,
-        ToastyModule.forRoot()
+        ToastyModule.forRoot(),
+        NgSpinKitModule
     ],                                                  
     declarations: [
         LandingComponent, 

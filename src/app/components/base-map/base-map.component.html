@@ -1,6 +1,6 @@
 <div *ngIf="lat && lng" style="height: 100%;"> 
 
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomLevel">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomLevel" (mapClick)="placeMarker($event)">
           
           <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
 

@@ -14,6 +14,10 @@ div.page-container{
 
 @media (max-width: 767px){
     .banner-content {
-        margin-top: 0px !important;
+        margin-top: 20px !important;
     }
+}
+
+div.three-bounce-spinner div{
+    background-color: #fff !important;
 }

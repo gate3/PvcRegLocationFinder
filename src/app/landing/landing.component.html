@@ -1,14 +1,41 @@
-<section class="generic-banner relative">
-        <div class="">
-            <div class="row full-height justify-content-center">
-                <div class="col-lg-12 page-container">
-                    <div class="banner-content" >
-                        <!--<base-map></base-map>-->
-                        <list-item *ngFor="let l of locations" [location]="l"></list-item>
+<section class="generic-banner element-banner relative">
+        <div class="container">
+            <div class="row height align-items-center justify-content-center" 
+                style="height: 300px;">
+                <div class="col-lg-12">
+                    <div class="banner-content text-center">
+                        <h2 class="text-white">Welcome</h2>
+                        <p class="text-white">
+                            This app will help you find the voters card registration center around you. The locations are being loaded in realtime as soon as they are loaded, they will appear below, please click any location to begin.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+</section>
+<section class="generic-banner relative" *ngIf="!loading">
+        <div class="">
+            <div class="row full-height justify-content-center">
+                <div class="col-lg-12 page-container">
+                    <div class="banner-content" >
+                        <list-item
+                            *ngFor="let l of locations;trackBy:trackByFn" 
+                            [location]="l">
+                        </list-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section class="generic-banner element-banner relative" *ngIf="loading">
+    <div class="container">
+        <div class="row height align-items-center justify-content-center">
+            <div class="col-xs-12" style="color: #fff">
+                <sk-three-bounce></sk-three-bounce>
+                ...Please wait while we find registration centers
+            </div>
+        </div>
+    </div>
 </section>
 
 <ng2-toasty [position]="'center-center'"></ng2-toasty>

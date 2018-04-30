@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module'
 
@@ -13,6 +12,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { ToastyModule, ToastyService, ToastyConfig } from 'ng2-toasty';
 import {SlimLoadingBarModule, SlimLoadingBarService} from 'ng2-slim-loading-bar';
+import { EventService } from './services';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,10 @@ import {SlimLoadingBarModule, SlimLoadingBarService} from 'ng2-slim-loading-bar'
     AngularFireDatabaseModule,
     DeviceDetectorModule.forRoot(),
     ToastyModule.forRoot(),
-    SlimLoadingBarModule.forRoot()
+    SlimLoadingBarModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [ToastyService, ToastyConfig, SlimLoadingBarService],
+  providers: [ToastyService, ToastyConfig, SlimLoadingBarService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
