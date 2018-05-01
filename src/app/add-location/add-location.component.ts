@@ -25,7 +25,6 @@ export class AddLocationComponent implements OnInit{
 
     ngOnInit(): void {
         const requiredValidator:Array<Validators> = [Validators.required]
-
         this.addLocationForm = this.fbuilder.group({
             locationName:[null, requiredValidator],
             address:[null, requiredValidator],
@@ -49,12 +48,24 @@ export class AddLocationComponent implements OnInit{
             .subscribe(position=>{
                 this.lat = position.coords.latitude;
                 this.lng = position.coords.longitude;
-                console.log(this.lat, this.lng)
+                
                 this.loading = false
             }, e=>this.navigatorService.handlePermissionError(e))
     }
 
+    onCoordinates (e) {
+        console.log(e)
+    }
+
     onSubmit ({value}) {
+        if(this.addLocationForm.valid){
+            console.log(value)
+        }else{
+            Object.keys(this.addLocationForm.controls).forEach(field => { 
+                const control = this.addLocationForm.get(field);            
+                control.markAsTouched({ onlySelf: true });       
+            });
+        }
 
     }
 }

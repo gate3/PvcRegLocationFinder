@@ -8,5 +8,15 @@ div.main {
 
     img{
         margin-bottom: 20px;
+        animation: shrink 2s infinite alternate;
     }
+}
+
+@keyframes shrink {
+  0% {
+    width: 120px
+  }
+  100% {
+    width: 150px
+  }
 }

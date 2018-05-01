@@ -27,3 +27,7 @@ div.three-bounce-spinner div{
     height: 90%;
     margin-top: 20px;
 }
+
+.agm-map-container-inner{
+    height: 100% !important;
+}

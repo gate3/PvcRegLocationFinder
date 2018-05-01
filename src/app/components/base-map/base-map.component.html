@@ -2,14 +2,14 @@
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoomLevel" (mapClick)="placeMarker($event)">
           
-          <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+          <agm-direction *ngIf="dir != null" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
 
           <agm-marker [latitude]="lat"[longitude]="lng">
             
-            <agm-info-window>
+            <!--<agm-info-window>
               <h3><strong>Howdy!</strong></h3>
               <p>You are here!</p>
-            </agm-info-window>
+            </agm-info-window>-->
       
           </agm-marker>
       

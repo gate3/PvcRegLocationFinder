@@ -2,49 +2,64 @@
     This app isn't a one man effort, the locations are way to much to map. Please use the form below to add locations around you or that you know of. Thank you for your contribution.
 </red-section>
 <section class="generic-banner relative" *ngIf="!loading">
-    <div class="">
+    <div>
         <div class="row full-height justify-content-center">
-            <div class="col-xs-12 col-lg-7 page-container">
-                <div class="banner-content" style="display: flex">
+            <div class="col-xs-12 col-lg-7 page-container" 
+                style="margin-top: 2% !important;">
+                <div class="banner-content" style="display: flex; flex-direction: column">
 
                     <form novalidate style="width: 100%"
                         (ngSubmit)="onSubmit(addLocationForm)" 
                         [formGroup]="addLocationForm" role="form">
 
                         <div class="mt-10">
-                            <input type="text" placeholder="Location Name" class="single-input" formControlName="locationName"/>
+                            <input type="text" placeholder="Location Name" class="single-input" formControlName="locationName"
+                            [ngClass]="{'has-error':addLocationForm.get('locationName').hasError('required') && addLocationForm.get('locationName').touched}"
+                            />
                         </div>
 
                         <div class="input-group-icon mt-10">
                             <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
-                            <input type="text" placeholder="Address" class="single-input" formControlName="address"/>
+                            <input type="text" placeholder="Address" class="single-input" formControlName="address"
+                            [ngClass]="{'has-error':addLocationForm.get('address').hasError('required') && addLocationForm.get('address').touched}"
+                            />
                         </div>
 
                         <div class="mt-10">
-                            <select formControlName="state" (change)="showLgas($event)"
-                                class="form-control single-input">
+                            <select formControlName="state" 
+                                (change)="showLgas($event)"
+                                class="form-control single-input"
+                                [ngClass]="{'has-error':addLocationForm.get('state').hasError('required') && addLocationForm.get('state').touched}">
                                 <option *ngFor="let s of states">{{s}}</option>
                             </select>
                         </div>
 
                         <div class="mt-10">
                             <select formControlName="lga" 
-                                class="form-control single-input">
+                                class="form-control single-input"
+                                [ngClass]="{'has-error':addLocationForm.get('lga').hasError('required') && addLocationForm.get('lga').touched}">
                                 <option *ngFor="let lga of local_govts">
                                     {{lga.name}}
                                 </option>
                             </select>
-                        </div>                      
+                        </div>     
+
+                        <div class="col-xs-12 map-container" 
+                            style="height: 450px !important;">
+                            <base-map [lat]="lat" [lng]="lng" [isPlaceFinder]="true" (onCoordinates)="onCoordinates($event)"></base-map>
+                        </div>
+
+                        <div class="mt-10 text-center">
+                            <button type="submit" class="genric-btn success circle">
+                                Save Location
+                            </button>         
+                        </div>        
                     </form>
-
-                    <div class="col-xs-12 map-container">
-                        <base-map [lat]="lat" [lng]="lng"></base-map>
-                    </div>
-
+                    
                 </div>
             </div>
         </div>
     </div>
 </section>
     
-<loading *ngIf="loading"></loading>
+<loading *ngIf="loading" [message]="''"></loading>
