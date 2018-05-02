@@ -48,8 +48,7 @@ export class GeoService {
             }
             const u = this.userList.query.ref
                           .child(`/${userKey}`)
-                          .once('value')
-                          .then(s=>{
+                          .on('value',s=>{
                             const {name, address} = s.val()
 
                             let hit = {
