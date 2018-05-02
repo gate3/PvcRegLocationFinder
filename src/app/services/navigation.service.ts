@@ -12,17 +12,17 @@ export class NavigationService {
             return Observable.create(observer=>{
                 if (window.navigator && window.navigator.geolocation) {
                     //we don't want to wait forever so we put navigation on a one minute timer
-                    /*const timer = setTimeout(()=>{
+                    const timer = setTimeout(()=>{
                         const res = confirm(Strings.NAVIGATION.ERROR.TIMEOUT)
                         if(res){
                             window.location.reload(true)
                         }
-                    },60000)*/
+                    },60000)
                     
                     this.navObject = window.navigator.geolocation
                         .watchPosition(position=>{
                             //if navigation comes through clear the timer
-                            //clearTimeout(timer)
+                            clearTimeout(timer)
 
                             observer.next(position)
                             observer.complete()
