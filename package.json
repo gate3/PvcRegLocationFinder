@@ -8,8 +8,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "git_build_deploy":"git add . && git commit -m "90% Done" && git push && ng build --prod && firebase deploy"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
