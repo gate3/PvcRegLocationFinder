@@ -2,14 +2,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { Observable } from 'rxjs/Observable';
 import {Strings} from './strings'
-import { ToastyService, ToastyConfig } from 'ng2-toasty';
 
 @Injectable()
 export class NavigationService {
 
-    constructor (private toastyService:ToastyService, private toastyConfig:ToastyConfig){
-        this.toastyConfig.theme = 'material'
-    }
+    private navObject:any;
 
     getCurrentLocation ():Observable<any> {
             return Observable.create(observer=>{
@@ -21,9 +18,9 @@ export class NavigationService {
                             window.location.reload(true)
                         }
                     },60000)*/
-
-                    window.navigator.geolocation
-                        .getCurrentPosition(position=>{
+                    
+                    this.navObject = window.navigator.geolocation
+                        .watchPosition(position=>{
                             //if navigation comes through clear the timer
                             //clearTimeout(timer)
 
@@ -38,10 +35,14 @@ export class NavigationService {
 
     handlePermissionError (e) {
         if(e.code === e.PERMISSION_DENIED){
-            this.toastyService.default(Strings.NAVIGATION.ERROR.PERMISSION)            
+            alert(Strings.NAVIGATION.ERROR.PERMISSION)            
         }else if(e.code === e.POSITION_UNAVAILABLE){
-            this.toastyService.default(Strings.NAVIGATION.ERROR.UNAVAILABLE)
+            alert(Strings.NAVIGATION.ERROR.UNAVAILABLE)
         }
+    }
+
+    clearWatch () {
+        this.clearWatch
     }
 
 }

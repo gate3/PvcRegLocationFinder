@@ -38,6 +38,7 @@ export class LandingComponent {
     ngOnDestroy() {
         this.subscription.unsubscribe()
         this.eventSub.unsubscribe()
+        //this.navigationService.clearWatch()
     }
 
     private getUserLocation() {

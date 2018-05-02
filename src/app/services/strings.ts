@@ -6,6 +6,16 @@ const NAVIGATION = {
     }
 }
 
+const VALIDATION = {
+    POSITION:'You must select a position first!'
+}
+
+const ADD_LOCATION = {
+    SUCCESS:'Location added successfully',
+}
+
 export const Strings = {
-    NAVIGATION
+    NAVIGATION,
+    VALIDATION,
+    ADD_LOCATION
 }

@@ -4,6 +4,7 @@ import * as GeoFire from "geofire";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { EventService } from './event.service';
 import {Constants} from './constants'
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class GeoService {
     private dbRef: AngularFireList<any>;
@@ -20,13 +21,17 @@ export class GeoService {
     }
 
     /// Adds GeoFire data to database
-    setLocation(name:string, address:string, coords: Array<number>) {
-        const userKey = this.userList.push({name, address}).key
-        this.geoFire.set(userKey, coords)
-            .then(_ => console.log('location updated'))
-            .catch(err => console.log(err))
+    setLocation(name:string, address:string, coords: Array<number>):Observable<any> {
+        return Observable.create(observer=>{
+            const userKey = this.userList.push({name, address}).key
+            this.geoFire.set(userKey, coords)
+            .then(s => {
+                observer.next('saved')
+                observer.complete()
+            })
+            .catch(err => observer.error(err))
+        })        
     }
-
 
     /// Queries database for nearby locations
     /// Maps results to the hits BehaviorSubject

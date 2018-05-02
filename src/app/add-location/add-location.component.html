@@ -1,7 +1,7 @@
 <red-section [title]="'Help Add Locations'">
     This app isn't a one man effort, the locations are way to much to map. Please use the form below to add locations around you or that you know of. Thank you for your contribution.
 </red-section>
-<section class="generic-banner relative" *ngIf="!loading">
+<section class="generic-banner relative add-location-section" *ngIf="!loading">
     <div>
         <div class="row full-height justify-content-center">
             <div class="col-xs-12 col-lg-7 page-container" 
@@ -20,8 +20,8 @@
 
                         <div class="input-group-icon mt-10">
                             <div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
-                            <input type="text" placeholder="Address" class="single-input" formControlName="address"
-                            [ngClass]="{'has-error':addLocationForm.get('address').hasError('required') && addLocationForm.get('address').touched}"
+                            <input type="text" placeholder="Address" class="single-input" formControlName="locationAddress"
+                            [ngClass]="{'has-error':addLocationForm.get('locationAddress').hasError('required') && addLocationForm.get('locationAddress').touched}"
                             />
                         </div>
 
@@ -30,6 +30,7 @@
                                 (change)="showLgas($event)"
                                 class="form-control single-input"
                                 [ngClass]="{'has-error':addLocationForm.get('state').hasError('required') && addLocationForm.get('state').touched}">
+                                <option>Select State</option>
                                 <option *ngFor="let s of states">{{s}}</option>
                             </select>
                         </div>
@@ -38,13 +39,14 @@
                             <select formControlName="lga" 
                                 class="form-control single-input"
                                 [ngClass]="{'has-error':addLocationForm.get('lga').hasError('required') && addLocationForm.get('lga').touched}">
+                                <option>Select Lga</option>
                                 <option *ngFor="let lga of local_govts">
                                     {{lga.name}}
                                 </option>
                             </select>
                         </div>     
 
-                        <div class="col-xs-12 map-container" 
+                        <div class="col-xs-12 map-container" *ngIf="showMap"
                             style="height: 450px !important;">
                             <base-map [lat]="lat" [lng]="lng" [isPlaceFinder]="true" (onCoordinates)="onCoordinates($event)"></base-map>
                         </div>

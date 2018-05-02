@@ -6,6 +6,21 @@
     }
 }*/
 
-a{
-    color: #fff
+div.main-menubar{
+    nav{
+        text-align: right !important;
+        a.menu-links{
+            color: #fff 
+        }
+    }
+}
+
+@media (max-width: 767px){
+    nav {
+        width: 150px;
+        text-align: center !important;
+    }
+    nav a{
+        color: #000 !important
+    }
 }

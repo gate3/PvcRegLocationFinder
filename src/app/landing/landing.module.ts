@@ -11,7 +11,6 @@ import {BaseMapModule} from '../components'
 
 import {ListItemComponent} from './components'
 
-import {ToastyModule} from 'ng2-toasty'
 import { LandingMapModule } from './landing-map/landing-map.module';
 import { HomeModule } from './home/home.module';
 import { RedSectionModule } from '../shared';
@@ -21,7 +20,6 @@ import { LoadingModule } from '../shared/loading/loading.module';
     imports: [
         LandingRoutingModule,
         CommonModule,
-        ToastyModule.forRoot(),
         LandingMapModule,
         HomeModule,
         RedSectionModule,
