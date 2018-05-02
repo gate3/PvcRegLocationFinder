@@ -27,12 +27,12 @@ export class LandingComponent {
                                 if(type === Constants.EVENT_MESSAGES.LOADING){
                                     this.loading = false
                                 }
-                            })
+                            }, e=>alert(e))
 
         this.subscription = this.geo.hits
             .subscribe(hits => {
                 this.locations = hits
-            },console.error)
+            },e=>alert(e))
     }
 
     ngOnDestroy() {
@@ -42,7 +42,6 @@ export class LandingComponent {
     }
 
     private getUserLocation() {
-        
         /// locate the user
         this.navigationService.getCurrentLocation().subscribe(position=>{
             this.lat = position.coords.latitude;
